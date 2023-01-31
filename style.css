@@ -1,0 +1,137 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+body {
+    font-family: "Poppins", sans-serif;
+    padding: 0;
+    margin: 0;
+    background-color: #88abff;
+}
+
+ul {
+    list-style: none;
+}
+
+p {
+    margin: 0;
+}
+
+h1,
+h2,
+h3 {
+    margin: 0;
+}
+
+.wrapper {
+    margin: 30px;
+}
+
+.notes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+.add-note {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 250px;
+    width: 265px;
+    padding: 15px 20px 20px;
+    background-color: #fff;
+    color: #88abff;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgb(0 0 0 / 5%);
+    cursor: pointer;
+}
+.add-note__icon {
+    margin-bottom: 20px;
+    display: block;
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    line-height: 60px;
+    font-size: 50px;
+    border: 2px dashed #88abff;
+    border-radius: 50%;
+}
+.note {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 15px 20px 20px;
+    height: 250px;
+    width: 265px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgb(0 0 0 / 5%);
+}
+.note__content {
+}
+.note__title {
+    margin-bottom: 5px;
+    font-size: 22px;
+    font-weight: 500;
+}
+.note__desc {
+    color: #575757;
+    font-size: 16px;
+}
+.note__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 5px;
+    border-top: 1px solid #e0dede;
+}
+.note__date {
+    color: #6d6d6d;
+    font-size: 14px;
+}
+.note__settings {
+    display: none;
+}
+
+.note__dots {
+    margin-top: -10px;
+    font-size: 22px;
+    color: #6d6d6d;
+    display: block;
+    cursor: pointer;
+}
+.note__edit {
+}
+.note__delete {
+}
+.popup {
+    display: none;
+}
+.overlay {
+}
+.popup__content {
+}
+.popup__form {
+}
+.popup-form {
+}
+.popup-form__input {
+}
+.popup-form__title {
+}
+.popup-form__button {
+}
+
+@media (max-width: 670px) {
+    .note {
+        width: 100%;
+    }
+
+    .add-note {
+        width: 100%;
+    }
+}

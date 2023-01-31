@@ -9,24 +9,45 @@
         <script src="script.js" defer></script>
     </head>
     <body>
-        <ul class="notes">
-            <li class="add-note">
-                <span class="add-note__icon">+</span>
-                <p>Add new note</p>
-            </li>
-            <li class="note">
-                <div class="note__content">
-                    <h2 class="note__title"></h2>
-                    <p class="note__desc"></p>
+        <div class="wrapper">
+            <ul class="notes">
+                <li class="add-note">
+                    <span class="add-note__icon">+</span>
+                    <p>Add new note</p>
+                </li>
+                <li class="note">
+                    <div class="note__content">
+                        <h2 class="note__title">Title</h2>
+                        <p class="note__desc">Some text</p>
+                    </div>
+                    <div class="note__footer">
+                        <span class="note__date">13.12.2023</span>
+                        <span class="note__dots">...</span>
+                        <!-- <ul class="note__settings">
+                            <li class="note__edit">edit</li>
+                            <li class="note__delete">delete</li>
+                        </ul> -->
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="popup">
+            <div class="overlay">
+                <div class="popup__content">
+                    <form class="popup__form popup-form" action="#">
+                        <label class="popup-form__input">
+                            <h3 class="popup-form__title">Title</h3>
+                            <input type="text" />
+                        </label>
+                        <label class="popup-form__input">
+                            <h3 class="popup-form__title">Description</h3>
+                            <input type="text" />
+                        </label>
+
+                        <button class="popup-form__button">Add note</button>
+                    </form>
                 </div>
-                <div class="note__footer">
-                    <span class="note__date"></span>
-                    <ul class="note__settings">
-                        <li class="note__edit"></li>
-                        <li class="note__delete"></li>
-                    </ul>
-                </div>
-            </li>
-        </ul>
+            </div>
+        </div>
     </body>
 </html>
