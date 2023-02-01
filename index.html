@@ -5,7 +5,18 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Notes</title>
+
         <link rel="stylesheet" href="style.css" />
+
+        <script
+            type="module"
+            src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+        ></script>
+        <script
+            nomodule
+            src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+        ></script>
+
         <script src="script.js" defer></script>
     </head>
     <body>
@@ -23,10 +34,16 @@
                     <div class="note__footer">
                         <span class="note__date">13.12.2023</span>
                         <span class="note__dots">...</span>
-                        <!-- <ul class="note__settings">
-                            <li class="note__edit">edit</li>
-                            <li class="note__delete">delete</li>
-                        </ul> -->
+                        <ul class="note__settings">
+                            <li class="note__edit">
+                                <ion-icon name="create-outline"></ion-icon>
+                                Edit
+                            </li>
+                            <li class="note__delete">
+                                <ion-icon name="trash-outline"></ion-icon>
+                                Delete
+                            </li>
+                        </ul>
                     </div>
                 </li>
             </ul>
@@ -34,6 +51,9 @@
         <div class="popup">
             <div class="overlay">
                 <div class="popup__content">
+                    <button class="popup-close">
+                        <ion-icon name="close-outline"></ion-icon>
+                    </button>
                     <form class="popup__form popup-form" action="#">
                         <label class="popup-form__input">
                             <h3 class="popup-form__title">Title</h3>
@@ -41,7 +61,7 @@
                         </label>
                         <label class="popup-form__input">
                             <h3 class="popup-form__title">Description</h3>
-                            <input type="text" />
+                            <textarea></textarea>
                         </label>
 
                         <button class="popup-form__button">Add note</button>

@@ -14,6 +14,7 @@ body {
 
 ul {
     list-style: none;
+    padding: 0;
 }
 
 p {
@@ -83,6 +84,8 @@ h3 {
     font-size: 16px;
 }
 .note__footer {
+    position: relative;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -94,7 +97,32 @@ h3 {
     font-size: 14px;
 }
 .note__settings {
-    display: none;
+    position: absolute;
+    opacity: 0;
+    z-index: 1;
+    right: 0px;
+    bottom: 0;
+    padding: 10px 0px;
+    box-shadow: 0 0 6px rgba(56, 51, 51, 0.15);
+    background: #fff;
+    border-radius: 5px;
+    transform: scale(0);
+    transform-origin: bottom right;
+    transition: transform 0.2s ease;
+}
+
+.note__settings.show {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.note__settings li {
+    padding: 0 10px;
+    cursor: pointer;
+}
+
+.note__settings li:hover {
+    background-color: #edeaea;
 }
 
 .note__dots {
@@ -109,21 +137,94 @@ h3 {
 .note__delete {
 }
 .popup {
-    display: none;
+    /* display: none; */
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    min-height: 100%;
 }
 .overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    min-height: 100%;
 }
 .popup__content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 375px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 15px rgb(0 0 0 / 10%);
 }
 .popup__form {
 }
 .popup-form {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
 }
 .popup-form__input {
 }
+
+.popup-form__input input,
+textarea {
+    font-family: "Poppins";
+    width: 100%;
+    padding: 10px 5px;
+    font-size: 18px;
+    outline: none;
+    border: 1px solid #999;
+    border-radius: 5px;
+    resize: none;
+}
+
+.popup-form__input input:hover,
+textarea:hover {
+    box-shadow: 0px 0 10px rgb(0 0 0 / 10%);
+}
+
+.popup-form__input textarea {
+    height: 200px;
+}
+
 .popup-form__title {
+    font-size: 18px;
+    font-weight: 400;
 }
 .popup-form__button {
+    padding: 10px 5px;
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    background-color: #88abff;
+    border-radius: 5px;
+    box-shadow: 0 0 15px rgb(0 0 0 / 10%);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.popup-form__button:hover {
+    opacity: 0.9;
+}
+
+.popup-close {
+    position: absolute;
+    right: 0;
+    top: 10px;
+    color: #575757;
+    border: none;
+    background-color: transparent;
+    font-size: 26px;
+    font-weight: 600;
+    cursor: pointer;
 }
 
 @media (max-width: 670px) {
