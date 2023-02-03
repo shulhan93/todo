@@ -14,6 +14,7 @@ const addNoteBtn = document.querySelector(".add-note");
 const popup = document.querySelector(".popup");
 const titleInput = document.querySelector("#title");
 const textInput = document.querySelector("#text");
+const settingsBtn = document.querySelectorAll(".note__dots");
 
 const data = [];
 
@@ -51,7 +52,6 @@ function createNote(title, text) {
         date: date,
     };
     data.push(note);
-    console.log(data);
     updateLocalStorage(note);
     renderNote(note);
 }
@@ -65,7 +65,7 @@ function renderNote(note) {
     listNotes.insertAdjacentHTML(
         "beforeend",
         `
-    <li class="note">
+    <li id="${note.id}" class="note">
     <div class="note__content">
         <h2 class="note__title">${note.title}</h2>
         <p class="note__desc">${note.text}</p>
@@ -95,6 +95,16 @@ function renderListNotes() {
     data.forEach(renderNote);
 }
 
+listNotes.addEventListener("click", function (e) {
+    let btnSetting = e.target.closest(".note__dots");
+    let note;
+    if (!btnSetting) {
+        return;
+    }
+    note = e.target.closest(".note");
+
+    note.querySelector(".note__settings").classList.toggle("active");
+});
 checkData();
 
 popup.addEventListener("click", function (e) {
@@ -111,9 +121,3 @@ popup.addEventListener("click", function (e) {
 });
 
 addNoteBtn.addEventListener("click", addNote);
-
-// addNoteBtn.addEventListener("click", function () {
-//     popup.classList.add("active");
-// });
-
-function getData() {}

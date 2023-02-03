@@ -66,7 +66,7 @@ h3 {
     flex-direction: column;
     justify-content: space-between;
     padding: 15px 20px 20px;
-    height: 250px;
+    min-height: 250px;
     width: 265px;
     background-color: #fff;
     border-radius: 5px;
@@ -82,10 +82,10 @@ h3 {
 .note__desc {
     color: #575757;
     font-size: 16px;
+    word-wrap: break-word;
 }
 .note__footer {
     position: relative;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -100,15 +100,15 @@ h3 {
     position: absolute;
     opacity: 0;
     z-index: 1;
-    right: 0px;
-    bottom: 0;
+    right: 23px;
+    bottom: 12px;
     padding: 10px 0px;
     box-shadow: 0 0 6px rgba(56, 51, 51, 0.15);
     background: #fff;
     border-radius: 5px;
     transform: scale(0);
     transform-origin: bottom right;
-    transition: transform 0.2s ease;
+    transition: all 0.2s ease;
 }
 
 .note__settings.active {
@@ -177,7 +177,9 @@ h3 {
 }
 .popup-form__input {
 }
-
+input, textarea {
+    font-family: 'Poppins', sans-serif;
+}
 .popup-form__input input,
 textarea {
     font-family: "Poppins";
