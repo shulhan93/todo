@@ -34,12 +34,16 @@ function showPopup() {
     popup.classList.add("active");
 }
 
-let nDate = new Date().getMonth();
-console.log(nDate);
+function createdData() {
+    let d = new Date();
+    let month = d.getMonth() < 10 ? `0${d.getMonth() + 1}` : d.getMonth() + 1;
+    let day = d.getDate() < 10 ? `0${d.getDate()}` : d.getDate();
+    return `${day}-${month}-${d.getFullYear()}`;
+}
 
 function createNote(title, text) {
     let idNote = new Date().getTime();
-    let date = new Date();
+    let date = createdData();
     let note = {
         id: idNote,
         title: title,
@@ -47,7 +51,14 @@ function createNote(title, text) {
         date: date,
     };
     data.push(note);
+    console.log(data);
+    updateLocalStorage(note);
     renderNote(note);
+}
+
+function updateLocalStorage() {
+    localStorage.removeItem("notes");
+    localStorage.setItem("notes", JSON.stringify(data));
 }
 
 function renderNote(note) {
