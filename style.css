@@ -111,7 +111,7 @@ h3 {
     transition: transform 0.2s ease;
 }
 
-.note__settings.show {
+.note__settings.active {
     opacity: 1;
     transform: scale(1);
 }
@@ -137,29 +137,35 @@ h3 {
 .note__delete {
 }
 .popup {
-    /* display: none; */
-    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+    position: fixed;
     left: 0;
     top: 0;
     width: 100%;
-    min-height: 100%;
+    height: 100%;
+    transition: all 0.3s ease;
 }
-.overlay {
-    position: absolute;
-    left: 0;
-    top: 0;
+
+.popup.active {
+    opacity: 1;
+    visibility: visible;
+}
+.popup__body {
+    background-color: #1e1e1e5d;
     width: 100%;
     min-height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 10px;
 }
 .popup__content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    position: relative;
     width: 375px;
     background-color: #fff;
     border-radius: 5px;
-    box-shadow: 0 0 15px rgb(0 0 0 / 10%);
+    box-shadow: 0 0 15px rgb(0 0 0 / 10%);\
 }
 .popup__form {
 }
