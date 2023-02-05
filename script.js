@@ -97,14 +97,27 @@ function renderListNotes() {
 
 listNotes.addEventListener("click", function (e) {
     let btnSetting = e.target.closest(".note__dots");
-    let note;
-    if (!btnSetting) {
+    let note = e.target.closest(".note");
+    if (btnSetting) {
+        menuSettingsShow(note.querySelector(".note__settings"));
+    } else {
         return;
     }
-    note = e.target.closest(".note");
-
-    note.querySelector(".note__settings").classList.toggle("active");
 });
+
+function menuSettingsShow(settings) {
+    const deleteBtn = settings.querySelector(".note__delete");
+    settings.classList.toggle("active");
+    deleteBtn.addEventListener("click", deleteNote);
+}
+
+function deleteNote(e) {
+    const note = e.target.closest(".note");
+    note.remove();
+    data.forEach((el, idx) => (el.id == note.id ? data.splice(idx, 1) : false));
+    updateLocalStorage();
+}
+
 checkData();
 
 popup.addEventListener("click", function (e) {
