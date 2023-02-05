@@ -165,10 +165,9 @@ h3 {
     width: 375px;
     background-color: #fff;
     border-radius: 5px;
-    box-shadow: 0 0 15px rgb(0 0 0 / 10%);\
+    box-shadow: 0 0 15px rgb(0 0 0 / 10%);
 }
-.popup__form {
-}
+
 .popup-form {
     padding: 30px;
     display: flex;
@@ -177,8 +176,9 @@ h3 {
 }
 .popup-form__input {
 }
-input, textarea {
-    font-family: 'Poppins', sans-serif;
+input,
+textarea {
+    font-family: "Poppins", sans-serif;
 }
 .popup-form__input input,
 textarea {

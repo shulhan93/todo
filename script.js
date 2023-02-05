@@ -15,6 +15,7 @@ const popup = document.querySelector(".popup");
 const titleInput = document.querySelector("#title");
 const textInput = document.querySelector("#text");
 const settingsBtn = document.querySelectorAll(".note__dots");
+let updId;
 
 const data = [];
 
@@ -33,6 +34,7 @@ function addNote(e) {
 
 function showPopup() {
     popup.classList.add("active");
+    console.log(popup.querySelector("input"));
 }
 
 function createdData() {
@@ -40,20 +42,6 @@ function createdData() {
     let month = d.getMonth() < 10 ? `0${d.getMonth() + 1}` : d.getMonth() + 1;
     let day = d.getDate() < 10 ? `0${d.getDate()}` : d.getDate();
     return `${day}-${month}-${d.getFullYear()}`;
-}
-
-function createNote(title, text) {
-    let idNote = new Date().getTime();
-    let date = createdData();
-    let note = {
-        id: idNote,
-        title: title,
-        text: text,
-        date: date,
-    };
-    data.push(note);
-    updateLocalStorage(note);
-    renderNote(note);
 }
 
 function updateLocalStorage() {
@@ -105,10 +93,55 @@ listNotes.addEventListener("click", function (e) {
     }
 });
 
-function menuSettingsShow(settings) {
+function menuSettingsShow(settings, note) {
     const deleteBtn = settings.querySelector(".note__delete");
+    const editBtn = settings.querySelector(".note__edit");
     settings.classList.toggle("active");
     deleteBtn.addEventListener("click", deleteNote);
+    editBtn.addEventListener("click", editNote);
+}
+
+function createNote(title, text) {
+    if (updId) {
+        let noteData;
+        data.forEach((el) => {
+            if (el.id == updId) {
+                el.title = title;
+                el.text = text;
+                noteData = el;
+            }
+        });
+        updateLocalStorage();
+        updateNoteUI(noteData);
+        updId = "";
+    } else {
+        let idNote = new Date().getTime();
+        let date = createdData();
+        let note = {
+            id: idNote,
+            title: title,
+            text: text,
+            date: date,
+        };
+        data.push(note);
+        updateLocalStorage(note);
+        renderNote(note);
+    }
+}
+
+function updateNoteUI({ id, title, text }) {
+    const note = document.getElementById(`${id}`);
+    note.querySelector(".note__title").textContent = title;
+    note.querySelector(".note__desc").textContent = text;
+}
+
+function editNote(e) {
+    const note = e.target.closest(".note");
+    note.querySelector(".note__settings").classList.remove("active");
+    popup.classList.add("active");
+    titleInput.value = note.querySelector(".note__title").textContent;
+    textInput.value = note.querySelector(".note__desc").textContent;
+    updId = note.id;
 }
 
 function deleteNote(e) {
