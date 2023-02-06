@@ -176,13 +176,10 @@ h3 {
 }
 .popup-form__input {
 }
-input,
-textarea {
-    font-family: "Poppins", sans-serif;
-}
+
 .popup-form__input input,
 textarea {
-    font-family: "Poppins";
+    font-family: "Poppins", sans-serif;
     width: 100%;
     padding: 10px 5px;
     font-size: 18px;
