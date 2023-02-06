@@ -15,6 +15,7 @@ const popup = document.querySelector(".popup");
 const titleInput = document.querySelector("#title");
 const textInput = document.querySelector("#text");
 const settingsBtn = document.querySelectorAll(".note__dots");
+const form = document.querySelector(".popup-form");
 let updId;
 
 const data = [];
@@ -29,12 +30,8 @@ function checkData() {
 }
 
 function addNote(e) {
-    showPopup();
-}
-
-function showPopup() {
     popup.classList.add("active");
-    console.log(popup.querySelector("input"));
+    window.setTimeout(() => titleInput.focus(), 300);
 }
 
 function createdData() {
@@ -158,6 +155,8 @@ popup.addEventListener("click", function (e) {
     const addNote = e.target.closest(".popup-form__button");
     if (btnClose) {
         popup.classList.remove("active");
+        titleInput.value = "";
+        textInput.value = "";
     } else if (addNote) {
         createNote(titleInput.value, textInput.value);
         titleInput.value = "";
@@ -167,3 +166,7 @@ popup.addEventListener("click", function (e) {
 });
 
 addNoteBtn.addEventListener("click", addNote);
+
+form.addEventListener("submit", function () {
+    console.log("1");
+});
