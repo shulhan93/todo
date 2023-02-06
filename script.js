@@ -79,21 +79,28 @@ function renderListNotes() {
     listNotes.querySelectorAll(".note").forEach((el) => el.remove());
     data.forEach(renderNote);
 }
+let isSettings = false;
+let noteSettings;
 
 listNotes.addEventListener("click", function (e) {
     let btnSetting = e.target.closest(".note__dots");
     let note = e.target.closest(".note");
-    if (btnSetting) {
+    if (btnSetting && !isSettings) {
+        noteSettings = note;
+        isSettings = !isSettings;
         menuSettingsShow(note.querySelector(".note__settings"));
-    } else {
-        return;
+    } else if (noteSettings) {
+        noteSettings
+            .querySelector(".note__settings")
+            .classList.remove("active");
+        isSettings = !isSettings;
     }
 });
 
 function menuSettingsShow(settings, note) {
     const deleteBtn = settings.querySelector(".note__delete");
     const editBtn = settings.querySelector(".note__edit");
-    settings.classList.toggle("active");
+    settings.classList.add("active");
     deleteBtn.addEventListener("click", deleteNote);
     editBtn.addEventListener("click", editNote);
 }
@@ -142,6 +149,9 @@ function editNote(e) {
 }
 
 function deleteNote(e) {
+    if (!confirm("Are you really want to delete this note?", "")) {
+        return;
+    }
     const note = e.target.closest(".note");
     note.remove();
     data.forEach((el, idx) => (el.id == note.id ? data.splice(idx, 1) : false));
@@ -149,24 +159,29 @@ function deleteNote(e) {
 }
 
 checkData();
-
 popup.addEventListener("click", function (e) {
     const btnClose = e.target.closest(".popup-close");
     const addNote = e.target.closest(".popup-form__button");
-    if (btnClose) {
-        popup.classList.remove("active");
-        titleInput.value = "";
-        textInput.value = "";
+    if (btnClose || e.target.classList.contains("popup__body")) {
+        closePopup();
     } else if (addNote) {
         createNote(titleInput.value, textInput.value);
-        titleInput.value = "";
-        textInput.value = "";
-        popup.classList.remove("active");
+        closePopup();
+    }
+});
+
+function closePopup() {
+    titleInput.value = "";
+    textInput.value = "";
+    popup.classList.remove("active");
+}
+
+window.addEventListener("keydown", function (e) {
+    if (e.code != "Escape") {
+        return;
+    } else {
+        closePopup();
     }
 });
 
 addNoteBtn.addEventListener("click", addNote);
-
-form.addEventListener("submit", function () {
-    console.log("1");
-});
