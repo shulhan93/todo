@@ -1,14 +1,3 @@
-/*
-1. Обраться к localStorage и спросить есть ли объект в нем.
-    - Если объекта нет, то ничего не происходит
-    - Если есть:
-     - читаем его
-     - Делаем его копию
-     - рендерим заметки на странице.
-2. По нажатию на "add new note" открывать диалоговое окно
-3. По нажатию на кнопку add note добавлем данные в объект, затем переносим в localStorage, после чего рендерим заметку.
-
-*/
 const listNotes = document.querySelector(".notes");
 const addNoteBtn = document.querySelector(".add-note");
 const popup = document.querySelector(".popup");
@@ -34,7 +23,7 @@ function addNote(e) {
     window.setTimeout(() => titleInput.focus(), 300);
 }
 
-function createdData() {
+function creatData() {
     let d = new Date();
     let month = d.getMonth() < 10 ? `0${d.getMonth() + 1}` : d.getMonth() + 1;
     let day = d.getDate() < 10 ? `0${d.getDate()}` : d.getDate();
@@ -120,7 +109,7 @@ function createNote(title, text) {
         updId = "";
     } else {
         let idNote = new Date().getTime();
-        let date = createdData();
+        let date = creatData();
         let note = {
             id: idNote,
             title: title,

@@ -135,10 +135,7 @@ h3 {
     color: #6d6d6d;
     cursor: pointer;
 }
-.note__edit {
-}
-.note__delete {
-}
+
 .popup {
     opacity: 0;
     visibility: hidden;
